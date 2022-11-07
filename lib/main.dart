@@ -256,32 +256,54 @@ class _MyHomePageState extends State<MyHomePage> {
       return str;
     }
 
-    var secretMessage = random(1000);
-    print("Processing.....");
+    //-------------------------------------------user creation ----------------------------------------------------
+    if (kDebugMode) {
+      print("Processing.....");
+    }
     DateTime startTime = DateTime.now();
     for (int i = 0; i < batchSize; i++) {
       addressBatch[i] = EthPrivateKey.createRandom(Random.secure());
     }
     DateTime endTime = DateTime.now();
-    for (int i = 0; i < batchSize; i++) {
+    if (kDebugMode) {
       print(
-          "u[$i]\naddress: ${addressBatch[i].address}\npublickey: ${hex.encode(addressBatch[0].encodedPublicKey)},\nprivateKey: ${hex.encode(addressBatch[0].privateKey)}");
+          "Generated $batchSize addresses in ${endTime.difference(startTime).inMilliseconds} ms");
     }
     setState(() {
       Data =
           "Generated $batchSize addresses in ${endTime.difference(startTime).inMilliseconds} ms";
     });
+    // for (int i = 0; i < batchSize; i++) {
+    //   print(
+    //       "u[$i]\naddress: ${addressBatch[i].address}\npublickey: ${hex.encode(addressBatch[0].encodedPublicKey)},\nprivateKey: ${hex.encode(addressBatch[0].privateKey)}");
+    // }
+
+    //---------------------------------------------msg creation------------------------------------------------------
+    startTime = DateTime.now();
+    for (int i = 0; i < batchSize; i++) {
+      var secretMessage = random(1000);
+    }
+    endTime = DateTime.now();
+    if (kDebugMode) {
+      print(
+          "$Data\nEncrypted $batchSize messages in ${endTime.difference(startTime).inMilliseconds} ms");
+    }
+    setState(() {
+      Data =
+          "$Data\nEncrypted $batchSize messages in ${endTime.difference(startTime).inMilliseconds} ms";
+    });
   }
 }
 
 String charAt(String subject, int position) {
+  // ignore: unnecessary_type_check
   if (subject is! String ||
       subject.length <= position ||
       subject.length + position < 0) {
     return '';
   }
 
-  int _realPosition = position < 0 ? subject.length + position : position;
+  int realPosition = position < 0 ? subject.length + position : position;
 
-  return subject[_realPosition];
+  return subject[realPosition];
 }
