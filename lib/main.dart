@@ -1,8 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:rsa_encrypt/rsa_encrypt.dart';
 import 'dart:math';
-
+import 'package:convert/convert.dart';
 import 'package:web3dart/credentials.dart';
 
 // import 'package:flutter/material.dart';
@@ -241,7 +240,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   testerFunction() async {
-    var batchSize = 10000;
+    var batchSize = 10;
     List<EthPrivateKey> addressBatch = List.filled(
       batchSize,
       EthPrivateKey.createRandom(Random.secure()),
@@ -264,13 +263,13 @@ class _MyHomePageState extends State<MyHomePage> {
       addressBatch[i] = EthPrivateKey.createRandom(Random.secure());
     }
     DateTime endTime = DateTime.now();
-    // for (int i = 0; i < batchSize; i++) {
-    //   print(
-    //       "u[$i]\naddress: ${addressBatch[i].address}\npublickey: ${addressBatch[i].publicKey},\nprivateKey: ${addressBatch[i].privateKey}");
-    // }
+    for (int i = 0; i < batchSize; i++) {
+      print(
+          "u[$i]\naddress: ${addressBatch[i].address}\npublickey: ${hex.encode(addressBatch[0].encodedPublicKey)},\nprivateKey: ${hex.encode(addressBatch[0].privateKey)}");
+    }
     setState(() {
       Data =
-          "Generated $batchSize addresses in ${endTime.difference(startTime).inMilliseconds}";
+          "Generated $batchSize addresses in ${endTime.difference(startTime).inMilliseconds} ms";
     });
   }
 }
