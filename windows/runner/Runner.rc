@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "tesst" "\0"
+            VALUE "FileDescription", "metamask" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "tesst" "\0"
+            VALUE "InternalName", "metamask" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2022 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "tesst.exe" "\0"
-            VALUE "ProductName", "tesst" "\0"
+            VALUE "OriginalFilename", "metamask.exe" "\0"
+            VALUE "ProductName", "metamask" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

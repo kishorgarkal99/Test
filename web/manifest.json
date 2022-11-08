@@ -1,6 +1,6 @@
 {
-    "name": "tesst",
-    "short_name": "tesst",
+    "name": "metamask",
+    "short_name": "metamask",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
